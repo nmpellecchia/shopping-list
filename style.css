@@ -1,0 +1,88 @@
+html {
+    background: url(shopping.jpg) center no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    font-family: Verdana, Arial, sans-serif;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.wrapper {
+  padding: 20px;
+  max-width: 60rem;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.5);
+  padding-top: 10px;
+  border-radius: 2px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+h2::after {
+    display: block;
+    content: '';
+    height: 4px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+}
+
+.add-items input {
+    padding: 10px;
+}
+
+button, input[type="submit"] {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:active, input[type="submit"]:active {
+    color: rgba(0, 0, 0, 0.7);
+    transition: 200ms;
+}
+
+/* Items */
+
+.items {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "item . del";
+    align-items: center;
+}
+
+li:after {
+    display: block;
+    content: '';
+    height: 2px;
+    background: rgba(0, 0, 0, 0.8);
+    grid-column: 1 / -1;
+}
+
+.items input {
+    display: none;
+}
+
+.delete {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 1.2rem;
+    grid-area: del;
+}
+
+.items input:checked + label {
+    text-decoration: line-through;
+}

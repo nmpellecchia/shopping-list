@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Shopping List</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>SHOPPING LIST</h2>
+        <form class="add-items">
+            <input type="text" name="item" placeholder="Thing to buy" required autocomplete="off">
+            <input type="submit" value="Add to the List">
+        </form>
+        <ul class="items">
+            <li>
+                <input type="checkbox" data-index="xd" id="item-test1">
+                <label for="item-test1">item</label>
+                <button class="delete">X</button> 
+            </li>
+        </ul>
+    </div>
+    
+
+    <script src="index.js"></script>
+</body>
+</html>
