@@ -60,9 +60,10 @@ button:active, input[type="submit"]:active {
 
 li {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas: "item . del";
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "item  del";
     align-items: center;
+    column-gap: 0.5vw;
 }
 
 li:after {
@@ -81,6 +82,13 @@ li:after {
     color: rgba(0, 0, 0, 0.4);
     font-size: 1.2rem;
     grid-area: del;
+    border: 1px solid rgba(255, 255, 255, 0.97);
+}
+
+.delete:hover {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: 200ms;
 }
 
 .items input:checked + label {
