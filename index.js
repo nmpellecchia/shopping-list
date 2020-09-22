@@ -2,6 +2,7 @@ const addItems = document.querySelector('.add-items');
 const itemList = document.querySelector('.items');
 const deleteButton = document.querySelector('.delete');
 const items = [];
+let lastItemChecked;
 
 function addItem(e) {
     e.preventDefault(); // Stops the page from refreshing;
@@ -33,12 +34,26 @@ function deleteFromList() {
     itemToRemove.remove();
 };
 
-function toggleChecked(e) {
-    if (!e.target.matches('input')) return; //skip function unless it's an input;
+ function toggleChecked(e) {
+    if(!e.target.matches('input')) return;
     const index = e.target.dataset.index;
     console.log(index);
+    items[index].checked = !items[index].checked;
+    //Toggle multiple if Ctrl + Click;
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let inBetween = false;
+    if(e.ctrlKey && e.target.checked) {
+        checkboxes.forEach(checkbox => {
+            if(checkbox === e.target || checkbox === lastItemChecked) {
+                inBetween = !inBetween;
+            };
+            if(inBetween) {
+            checkbox.checked = true;
+            };
+        });
+    }
+    lastItemChecked = e.target;
 };
-
 addItems.addEventListener('submit', addItem);
 deleteButton.addEventListener('click', deleteFromList);
 itemList.addEventListener('click', toggleChecked);
