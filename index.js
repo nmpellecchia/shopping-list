@@ -1,7 +1,7 @@
 const addItems = document.querySelector('.add-items');
 const itemList = document.querySelector('.items');
 const deleteButton = document.querySelector('.delete');
-const items = [];
+const items = JSON.parse(localStorage.getItem('items')) || [];
 let lastItemChecked;
 
 function addItem(e) {
@@ -15,10 +15,12 @@ function addItem(e) {
 
     items.push(newItem);
     addToList(items, itemList);
+    saveToLocalStorage(items);
+    
     this.reset();
 };
 
-function addToList(products, productList) {
+function addToList(products = [], productList) {
     productList.innerHTML = products.map((product, i) => {
         return `<li>
             <input type="checkbox" data-index=${i} id="item${i}" ${product.checked ? 'checked' : ''} />
@@ -37,7 +39,7 @@ function deleteFromList() {
  function toggleChecked(e) {
     if(!e.target.matches('input')) return;
     const index = e.target.dataset.index;
-    console.log(index);
+
     items[index].checked = !items[index].checked;
     //Toggle multiple if Ctrl + Click;
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -48,12 +50,23 @@ function deleteFromList() {
                 inBetween = !inBetween;
             };
             if(inBetween) {
+            i=checkbox.dataset.index;
+            items[i].checked = true;
             checkbox.checked = true;
             };
         });
     }
     lastItemChecked = e.target;
+    
+    saveToLocalStorage(items);
 };
+
+function saveToLocalStorage(items) {
+    localStorage.setItem('items', JSON.stringify(items));
+};
+
+addToList(items, itemList);
+
 addItems.addEventListener('submit', addItem);
 deleteButton.addEventListener('click', deleteFromList);
 itemList.addEventListener('click', toggleChecked);

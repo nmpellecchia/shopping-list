@@ -60,8 +60,8 @@ button:active, input[type="submit"]:active {
 
 li {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas: "item . del";
+    grid-template-columns:  1fr auto;
+    grid-template-areas: "item del";
     align-items: center;
 }
 
