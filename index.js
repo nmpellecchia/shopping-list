@@ -31,12 +31,17 @@ function addToList(products = [], productList) {
     }).join('');
 };
 
-function deleteFromList() {
-    const itemToRemove = this.parentElement;
-    itemToRemove.remove();
+function deleteFromList(e) {
+    const i = e.target.parentElement.firstElementChild.dataset.index;
+    const itemToRemove = items[i];
+    items.splice(i, 1);
+    
+    saveToLocalStorage(items);
+    addToList(items, itemList);
 };
 
  function toggleChecked(e) {
+    if(e.target.matches('.delete')) deleteFromList(e);
     if(!e.target.matches('input')) return;
     const index = e.target.dataset.index;
 
@@ -68,5 +73,4 @@ function saveToLocalStorage(items) {
 addToList(items, itemList);
 
 addItems.addEventListener('submit', addItem);
-deleteButton.addEventListener('click', deleteFromList);
 itemList.addEventListener('click', toggleChecked);
