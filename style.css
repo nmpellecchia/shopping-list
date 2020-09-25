@@ -6,14 +6,47 @@ html {
     justify-content: center;
     align-items: center;
     align-self: center;
-    font-family: Verdana, Arial, sans-serif;
+    font-family: 'Caveat','Indie Flower', cursive;
+    color: rgba(10, 11, 53, 0.9);
+}
+
+.about-me {
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: stretch;
+    font-family: 'Verdana', 'Arial', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(204, 197, 197, 0.719);
+}
+
+.about-me>* {
+    flex: 1;
+}
+
+a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+a:hover {
+    background: rgba(241, 238, 8, 0.753);
     color: rgba(0, 0, 0, 0.9);
+    transition: 200ms;
 }
 
 .wrapper {
   padding: 20px;
   max-width: 60rem;
-  background: rgba(255, 255, 255, 0.97);
+  background: rgba(231, 233, 108, 0.982);
   box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.5);
   padding-top: 10px;
   border-radius: 2px;
@@ -28,12 +61,13 @@ h2::after {
     display: block;
     content: '';
     height: 4px;
-    background: rgba(0, 0, 0, 0.8);
+    background:  rgba(6, 6, 37, 0.9);
     border-radius: 5px;
 }
 
 .add-items input {
     padding: 10px;
+    background: rgba(209, 211, 79, 0.982);
 }
 
 button, input[type="submit"] {
@@ -42,7 +76,8 @@ button, input[type="submit"] {
     outline: none;
     padding: 0.25rem 0.5rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-family: 'Caveat','Indie Flower', cursive;
+    font-size: 1.5rem;
 }
 
 button:active, input[type="submit"]:active {
@@ -63,13 +98,14 @@ li {
     grid-template-columns:  1fr auto;
     grid-template-areas: "item del";
     align-items: center;
+    font-size: 2rem;
 }
 
 li:after {
     display: block;
     content: '';
     height: 2px;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(6, 6, 37, 0.9);
     grid-column: 1 / -1;
 }
 
@@ -85,4 +121,10 @@ li:after {
 
 .items input:checked + label {
     text-decoration: line-through;
+}
+
+.clear {
+    color: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
 }

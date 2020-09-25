@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Shopping List</title>
 </head>
 <body>
+    <header class="about-me">
+        <p>Made by Nicolas Pellecchia</p>
+        <a href="#">Github</a>
+        <a href="#">Linkedin</a>
+        <a href="#">Google</a>
+        <a href="#">Facebook</a>
+        <a href="#">Codepen</a>
+    </header>
     <div class="wrapper">
         <h2>SHOPPING LIST</h2>
         <form class="add-items">
@@ -14,14 +23,10 @@
             <input type="submit" value="Add to the List">
         </form>
         <ul class="items">
-            <li>
-                <input type="checkbox" data-index="xd" id="item-test1">
-                <label for="item-test1">item</label>
-                <button class="delete">X</button> 
-            </li>
+            <li>Loading your list...</li>
         </ul>
+        <button class="clear" type="submit">Clear List</button>
     </div>
-    
 
     <script src="index.js"></script>
 </body>
