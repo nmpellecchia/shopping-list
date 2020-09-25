@@ -1,6 +1,6 @@
 const addItems = document.querySelector('.add-items');
 const itemList = document.querySelector('.items');
-const deleteButton = document.querySelector('.delete');
+const clearButton = document.querySelector('.clear');
 const items = JSON.parse(localStorage.getItem('items')) || [];
 let lastItemChecked;
 
@@ -40,11 +40,18 @@ function deleteFromList(e) {
     addToList(items, itemList);
 };
 
- function toggleChecked(e) {
-    if(e.target.matches('.delete')) deleteFromList(e);
-    if(!e.target.matches('input')) return;
-    const index = e.target.dataset.index;
+function saveToLocalStorage(items) {
+    localStorage.setItem('items', JSON.stringify(items));
+};
 
+function handleClick(e) {
+  if(e.target.matches('.delete')) deleteFromList(e);
+  if(e.target.matches('input')) toggleChecked(e);
+
+};
+
+function toggleChecked(e) {
+    const index = e.target.dataset.index;
     items[index].checked = !items[index].checked;
     //Toggle multiple if Ctrl + Click;
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -66,11 +73,13 @@ function deleteFromList(e) {
     saveToLocalStorage(items);
 };
 
-function saveToLocalStorage(items) {
-    localStorage.setItem('items', JSON.stringify(items));
-};
+function clearList() {
+    localStorage.removeItem('items');
+    window.location.reload() // Without reloading the page next item you add will restore all items; 
+}
 
 addToList(items, itemList);
 
 addItems.addEventListener('submit', addItem);
-itemList.addEventListener('click', toggleChecked);
+itemList.addEventListener('click', handleClick);
+clearButton.addEventListener('click', clearList);
